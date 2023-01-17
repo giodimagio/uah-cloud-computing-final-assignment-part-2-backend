@@ -1,0 +1,6 @@
+# Flask app files
+*.pyc
+__pycache__/
+microservice1/__pycache__/
+microservice2/__pycache__/
+microservice3/__pycache__/
