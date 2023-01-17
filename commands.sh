@@ -7,26 +7,26 @@
     ## (Locally on WSL 2) Run each microservice:
 
         ### Inside pipenv shell
-        flask --app ./microservice1/microservice_1.py --debug run --port=5001
-        flask --app ./microservice2/microservice_2.py --debug run --port=5002
-        flask --app ./microservice3/microservice_3.py --debug run --port=5003
+        flask --app microservice_1.py --debug run --port=5001
+        flask --app microservice_2.py --debug run --port=5002
+        flask --app microservice_3.py --debug run --port=5003
 
         ### Outside pipenv shell
-        python -m flask --app ./microservice1/microservice_1.py --debug run --port=5001
-        python -m flask --app ./microservice2/microservice_2.py --debug run --port=5002
-        python -m flask --app ./microservice3/microservice_3.py --debug run --port=5003
+        python -mB flask --app microservice_1.py --debug run --port=5001
+        python -mB flask --app microservice_2.py --debug run --port=5002
+        python -mB flask --app microservice_3.py --debug run --port=5003
 
     ## (Locally on Docker) Run each microservice:
 
         ### Build images
-        docker image build -t giodimagio/microservice1:v1.0 ./microservice1/
-        docker image build -t giodimagio/microservice2:v1.0 ./microservice2/
-        docker image build -t giodimagio/microservice3:v1.0 ./microservice3/
+        docker image build -t giodimagio/microservice1:v1.0 .
+        docker image build -t giodimagio/microservice2:v1.0 .
+        docker image build -t giodimagio/microservice3:v1.0 .
 
         ### Remove images
-        docker build -t giodimagio/microservice1:v1.0 ./microservice1/
-        docker build -t giodimagio/microservice2:v1.0 ./microservice2/
-        docker build -t giodimagio/microservice3:v1.0 ./microservice3/
+        docker image rm -t microservice1:v1.0
+        docker image rm -t microservice2:v1.0
+        docker image rm -t microservice3:v1.0
 
         ### Run containers
         docker container run -d -p 5010:5000 --name microservice1 giodimagio/microservice1:v1.0
