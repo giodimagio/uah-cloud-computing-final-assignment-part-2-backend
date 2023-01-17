@@ -4,7 +4,7 @@
 
 # ------------------ Development ------------------ #
 
-    ## (Locally) Run each microservice on WSL2:
+    ## (Locally on WSL 2) Run each microservice:
 
         ### Inside pipenv shell
         flask --app ./microservice1/microservice_1.py --debug run --port=5001
@@ -16,7 +16,7 @@
         python -m flask --app ./microservice2/microservice_2.py --debug run --port=5002
         python -m flask --app ./microservice3/microservice_3.py --debug run --port=5003
 
-    ## (Locally) Run each microservice with Docker:
+    ## (Locally on Docker) Run each microservice:
 
         ### Build images
         docker image build -t giodimagio/microservice1:v1.0 ./microservice1/
@@ -39,6 +39,18 @@
         docker container exec -it microservice3 /bin/bash
 
 # ------------------ Production ------------------ #
+
+# ------------------ Testing ------------------ #
+
+    ## (Locally on WSL 2) Check if URLs are available
+    curl -I http://localhost:5001/microservice-1
+    curl -I http://localhost:5002/microservice-2
+    curl -I http://localhost:5003/microservice-3
+
+    ## (Locally on Docker) Check if URLs are available
+    curl -I http://localhost:5010/microservice-1
+    curl -I http://localhost:5020/microservice-2
+    curl -I http://localhost:5030/microservice-3
 
 # ------------------ Others ------------------ #
 
