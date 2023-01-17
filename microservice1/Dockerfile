@@ -7,4 +7,4 @@ WORKDIR /app
 RUN pip install pipenv
 RUN pipenv install --system --ignore-pipfile
 
-CMD ["python", "-m", "flask", "--app", "microservice_1.py", "--debug", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["python", "-Bm", "flask", "--app", "microservice_1.py", "--debug", "run", "--host=localhost", "--port=5000"]
