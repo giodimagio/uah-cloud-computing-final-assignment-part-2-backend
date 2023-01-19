@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: istio-ingressgateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: virtual-service
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-ingressgateway
+  http:
+  - match:
+    - uri:
+        exact: /microservice-1
+    route:
+    - destination:
+        host: microservice1.default.svc.cluster.local   # microservice1.uah-development.svc.cluster.local
+        port:
+          number: 5000
