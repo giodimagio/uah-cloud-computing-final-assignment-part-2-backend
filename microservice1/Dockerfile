@@ -1,10 +1,6 @@
-FROM python:3.11
-
-COPY . /app
-
+FROM python:3.8
 WORKDIR /app
-
-RUN pip install pipenv
-RUN pipenv install --system --ignore-pipfile
-
-CMD ["python", "-Bm", "flask", "--app", "microservice_1.py", "--debug", "run", "--host=localhost", "--port=5000"]
+COPY Pipfile* ./
+RUN pip install pipenv && pipenv install --system --ignore-pipfile
+COPY . .
+CMD ["python","app.py"]
