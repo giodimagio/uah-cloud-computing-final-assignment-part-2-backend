@@ -24,14 +24,24 @@
         docker image build -t giodimagio/microservice3:v1.0 .
 
         ### Remove images
-        docker image rm -t microservice1:v1.0
-        docker image rm -t microservice2:v1.0
-        docker image rm -t microservice3:v1.0
+        docker image rm giodimagio/microservice1:v1.0
+        docker image rm giodimagio/microservice2:v1.0
+        docker image rm giodimagio/microservice3:v1.0
 
         ### Run containers
         docker container run -d -p 5010:5000 --name microservice1 giodimagio/microservice1:v1.0
         docker container run -d -p 5020:5000 --name microservice2 giodimagio/microservice2:v1.0
         docker container run -d -p 5030:5000 --name microservice3 giodimagio/microservice3:v1.0
+
+        ### Stop containers
+        docker container stop microservice1
+        docker container stop microservice2
+        docker container stop microservice3
+
+        ### Remove containers
+        docker container rm microservice1
+        docker container rm microservice2
+        docker container rm microservice3
 
         ### Execute commands in containers
         docker container exec -it microservice1 /bin/bash
@@ -51,6 +61,9 @@
 
         ### K8s label "uah-development" namespace for Istio injection
         kubectl label namespace uah-development istio-injection=enabled
+
+        ### K8s get cluster info
+        kubectl cluster-info
 
         ### K8s get all namespaces & their labels
         kubectl get namespaces --show-labels
@@ -137,8 +150,43 @@
         ### K8s delete all gateways of "uah-development" namespace
         kubectl delete gateways --all --namespace=uah-development
 
-        ### K8s check deployment status of kiali deployment
-        kubectl rollout status deployment kiali --namespace=istio-system
+        ### K8s Addons: https://istio.io/latest/docs/setup/getting-started/#dashboard
+
+            #### K8s Addons deployment
+            kubectl apply -f samples/addons
+
+            #### K8s Addons uninstall
+            kubectl delete -f samples/addons
+
+            ### K8s check deployment status of kiali deployment
+            kubectl rollout status deployment kiali --namespace=istio-system
+
+            ### Istio Kiali dashboard
+            istioctl dashboard kiali
+
+        ### K8s install Gateway API CRDs: https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
+        kubectl get crd gateways.gateway.networking.k8s.io || \
+        { kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd?ref=v0.5.1" | kubectl apply -f -; }
+
+        ### Istio install with demo profile (Using Ingress Gateway)
+        istioctl install --set profile=demo -y
+
+        ### Istio install with minimal profile (Using Kubernetes Gateway)
+        istioctl install --set profile=minimal -y
+
+        ### Istio uninstall
+
+            #### Istio - uninstall
+            istioctl uninstall -y --purge
+
+            #### Istio - delete namespace
+            kubectl delete namespace istio-system
+
+            #### Istio - unlabel namespace
+            kubectl label namespace default istio-injection-
+
+        ### Istio - version
+        istioctl version
 
         ### Istio - get all services
         istioctl proxy-status
@@ -159,6 +207,16 @@
     curl -I http://localhost:5010/microservice-1
     curl -I http://localhost:5020/microservice-2
     curl -I http://localhost:5030/microservice-3
+
+    ## (Locally on Kubernetes inside the docker container or istio envoy proxy) Check if URLs are available
+    curl -I http://localhost:5000/microservice-1
+    curl -I http://localhost:5000/microservice-2
+    curl -I http://localhost:5000/microservice-3
+
+    ## (Locally on Kubernetes using the browser agains Kubernetes Gateway) Check if URLs are available
+    curl -I http://localhost:80/microservice-1
+    curl -I http://localhost:80/microservice-2
+    curl -I http://localhost:80/microservice-3
 
 # ------------------ Others ------------------ #
 
