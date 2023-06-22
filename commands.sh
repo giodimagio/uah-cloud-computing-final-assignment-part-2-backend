@@ -7,14 +7,14 @@
     ## (Locally on WSL 2) Run each microservice:
 
         ### Inside pipenv shell
-        flask --app microservice_1.py --debug run --host=localhost --port=5001
-        flask --app microservice_2.py --debug run --host=localhost --port=5002
-        flask --app microservice_3.py --debug run --host=localhost --port=5003
+        flask --app app.py --debug run --host=localhost --port=5001   # Microservice 1
+        flask --app app.py --debug run --host=localhost --port=5002   # Microservice 2
+        flask --app app.py --debug run --host=localhost --port=5003   # Microservice 3
 
         ### Outside pipenv shell
-        python -Bm flask --app microservice_1.py --debug run --host=localhost --port=5001
-        python -Bm flask --app microservice_2.py --debug run --host=localhost --port=5002
-        python -Bm flask --app microservice_3.py --debug run --host=localhost --port=5003
+        python3 -Bm flask --app app.py --debug run --host=localhost --port=5001   # Microservice 1
+        python3 -Bm flask --app app.py --debug run --host=localhost --port=5002   # Microservice 2
+        python3 -Bm flask --app app.py --debug run --host=localhost --port=5003   # Microservice 3
 
     ## (Locally on Docker) Run each microservice:
 
@@ -90,7 +90,7 @@
         kubectl get gateways -n uah-development --show-labels
 
         ### K8s get pod <pod-name>
-        kubectl get pod microservice1-deployment-7b67d649c5-ltp7w -n uah-development
+        kubectl get pod microservice1-75dfb94b85-gxwdn -n uah-development
 
         ### K8s get service <service-name>
         kubectl get service microservice1 -n uah-development
@@ -106,13 +106,13 @@
         kubectl get destinationrule -n uah-development
 
         ### K8s describe pod <pod-name>
-        kubectl describe pod microservice1-deployment-7b67d649c5-ltp7w -n uah-development
+        kubectl describe pod microservice1-75dfb94b85-gxwdn -n uah-development
 
         ### K8s describes service
         kubectl describe service microservice1-service -n uah-development
 
         ### K8s get logs of a pod <pod-name>
-        kubectl logs microservice1-deployment-7b67d649c5-ltp7w -n uah-development
+        kubectl logs microservice1-75dfb94b85-gxwdn -n uah-development
 
         ### K8s deploy the application
         #kubectl apply -f microservice_1.yaml -n uah-development
@@ -123,10 +123,10 @@
         kubectl apply -f development-istio-gateway.yaml -n uah-development
 
         ### K8s shell into a pod <pod-name>
-        kubectl exec -it microservice1-deployment-7b67d649c5-ltp7w -n uah-development /bin/bash
+        kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-development /bin/bash
 
         ### K8s execcute cURL command into a deployed pod <pod-name>
-        kubectl exec -it microservice1-deployment-7b67d649c5-ltp7w -n uah-development -- curl http://microservice1-service.uah-development.svc.cluster.local:5000/microservice-1
+        kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-development -- curl http://microservice1-service.uah-development.svc.cluster.local:5000/microservice-1
 
         ### K8s delete the deployment & service by their yaml file
         #kubectl delete -f microservice_1.yaml -n uah-development
@@ -239,6 +239,7 @@
     pipenv install flask
     pipenv install flask-cors
     pipenv install flask-restful
+    pipenv install requests
 
     ## Git - push
     git push origin main
