@@ -29,5 +29,13 @@ spec:
     route:
     - destination:
         port:
-          number: 5000
+          number: 5001
         host: microservice1.uah-development.svc.cluster.local   # microservice1.uah-development.svc.cluster.local
+  - match:
+    - uri:
+        prefix: /api/v1/microservice2
+    route:
+    - destination:
+        port:
+          number: 5002
+        host: microservice2.uah-development.svc.cluster.local   # microservice2.uah-development.svc.cluster.local

@@ -55,23 +55,11 @@
 
     ## (Locally with Docker Compose) Run all microservices:
 
-        ### Build images
-        docker-compose build
-
-        ### Push images to Docker Hub
-        docker-compose push
-
-        ### Remove images
-        docker-compose rm
-
         ### Run containers
         docker-compose up -d
 
         ### Stop containers
-        docker-compose stop
-
-        ### Remove containers
-        docker-compose rm
+        docker-compose down
 
         ### Execute commands in containers
         docker-compose exec microservice1 /bin/bash
