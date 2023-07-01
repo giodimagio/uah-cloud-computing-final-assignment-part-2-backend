@@ -4,24 +4,29 @@
 
 # ------------------ Development ------------------ #
 
-    ## (Locally on WSL 2) Run each microservice:
+    ## (Locally with WSL 2) Run each microservice:
 
         ### Inside pipenv shell
-        flask --app app.py --debug run --host=localhost --port=5001   # Microservice 1
-        flask --app app.py --debug run --host=localhost --port=5002   # Microservice 2
-        flask --app app.py --debug run --host=localhost --port=5003   # Microservice 3
+        flask --app app.py --env-file=.env.local_wsl2 --debug run --host=localhost --port=5001   # Microservice 1
+        flask --app app.py --env-file=.env.local_wsl2 --debug run --host=localhost --port=5002   # Microservice 2
+        flask --app app.py --env-file=.env.local_wsl2 --debug run --host=localhost --port=5003   # Microservice 3
 
         ### Outside pipenv shell
         python3 -Bm flask --app app.py --debug run --host=localhost --port=5001   # Microservice 1
         python3 -Bm flask --app app.py --debug run --host=localhost --port=5002   # Microservice 2
         python3 -Bm flask --app app.py --debug run --host=localhost --port=5003   # Microservice 3
 
-    ## (Locally on Docker) Run each microservice:
+    ## (Locally with Docker) Run each microservice separately:
 
         ### Build images
         docker image build -t giodimagio/microservice1:v1.0 .
         docker image build -t giodimagio/microservice2:v1.0 .
         docker image build -t giodimagio/microservice3:v1.0 .
+
+        ### Push images to Docker Hub
+        docker image push giodimagio/microservice1:v1.0
+        docker image push giodimagio/microservice2:v1.0
+        docker image push giodimagio/microservice3:v1.0
 
         ### Remove images
         docker image rm giodimagio/microservice1:v1.0
@@ -29,9 +34,9 @@
         docker image rm giodimagio/microservice3:v1.0
 
         ### Run containers
-        docker container run -d -p 5010:5000 --name microservice1 giodimagio/microservice1:v1.0
-        docker container run -d -p 5020:5000 --name microservice2 giodimagio/microservice2:v1.0
-        docker container run -d -p 5030:5000 --name microservice3 giodimagio/microservice3:v1.0
+        docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1.0 
+        docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1.0 
+        docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1.0 
 
         ### Stop containers
         docker container stop microservice1
@@ -48,7 +53,32 @@
         docker container exec -it microservice2 /bin/bash
         docker container exec -it microservice3 /bin/bash
 
-    ## (Locally on Kubernetes managed with Istio) Run the application
+    ## (Locally with Docker Compose) Run all microservices:
+
+        ### Build images
+        docker-compose build
+
+        ### Push images to Docker Hub
+        docker-compose push
+
+        ### Remove images
+        docker-compose rm
+
+        ### Run containers
+        docker-compose up -d
+
+        ### Stop containers
+        docker-compose stop
+
+        ### Remove containers
+        docker-compose rm
+
+        ### Execute commands in containers
+        docker-compose exec microservice1 /bin/bash
+        docker-compose exec microservice2 /bin/bash
+        docker-compose exec microservice3 /bin/bash
+
+    ## (Locally with Kubernetes managed with Istio) Run the application
 
         ### K8s create namespace
         kubectl create namespace uah-development
@@ -77,13 +107,13 @@
         ### K8s get all deployments of "uah-development" namespace with labels
         kubectl get deployments -n uah-development --show-labels
 
-        ## K8s get all virtualservices of "uah-development" namespace with labels
+        ### K8s get all virtualservices of "uah-development" namespace with labels
         kubectl get virtualservices -n uah-development --show-labels
 
-        ## K8s get all destinationrules of "uah-development" namespace with labels
+        ### K8s get all destinationrules of "uah-development" namespace with labels
         kubectl get destinationrules -n uah-development --show-labels
 
-        ## K8s get all serviceaccounts of "uah-development" namespace with labels
+        ### K8s get all serviceaccounts of "uah-development" namespace with labels
         kubectl get serviceaccounts -n uah-development  
 
         ### K8s get all gateways of "uah-development" namespace with labels
@@ -116,11 +146,11 @@
 
         ### K8s deploy the application
         #kubectl apply -f microservice_1.yaml -n uah-development
-        kubectl apply -f development-kubernetes-deployment.yaml -n uah-development
+        kubectl apply -f development-deploy-k8s-microservice1-v1.yaml -n uah-development
 
         ### K8s deploy istio gateway
         #kubectl apply -f microservice_1-gateway.yaml -n uah-development
-        kubectl apply -f development-istio-gateway.yaml -n uah-development
+        kubectl apply -f development-deploy-istio-gateway.yaml -n uah-development
 
         ### K8s shell into a pod <pod-name>
         kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-development /bin/bash
@@ -130,11 +160,11 @@
 
         ### K8s delete the deployment & service by their yaml file
         #kubectl delete -f microservice_1.yaml -n uah-development
-        kubectl delete -f development-kubernetes-deployment.yaml -n uah-development
+        kubectl delete -f development-deploy-k8s-microservice1-v1.yaml -n uah-development
 
         ### K8s delete istio gateway & virtualservice by their yaml file
         #kubectl delete -f microservice_1-gateway.yaml -n uah-development
-        kubectl delete -f development-istio-gateway.yaml -n uah-development
+        kubectl delete -f development-deploy-istio-gateway.yaml -n uah-development
 
         ### K8s delete istio gateway by its <gateway-name>
         kubectl delete gateway ingress-gateway -n uah-development
@@ -168,10 +198,13 @@
             #### K8s Addons uninstall
             kubectl delete -f samples/addons
 
-            ### K8s check deployment status of kiali deployment
+            #### K8s check deployment status of kiali deployment
             kubectl rollout status deployment kiali -n istio-system
 
-            ### Istio Kiali dashboard
+            #### K8s get kiali service
+            kubectl get svc kiali -n istio-system 
+
+            #### Istio Kiali dashboard
             istioctl dashboard kiali
 
         ### K8s install Gateway API CRDs: https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
@@ -240,6 +273,7 @@
     pipenv install flask-cors
     pipenv install flask-restful
     pipenv install requests
+    pipenv install python-dotenv
 
     ## Git - push
     git push origin main

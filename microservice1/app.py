@@ -14,4 +14,4 @@ class Microservice1(Resource):
 api.add_resource(Microservice1, '/api/v1/microservice1')
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5001, debug=True)

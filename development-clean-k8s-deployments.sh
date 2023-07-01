@@ -8,7 +8,7 @@ kubectl delete -f development-deploy-k8s-microservice1-v1.yaml -n uah-developmen
 
 kubectl delete -f development-deploy-istio-gateway.yaml -n uah-development
 
-kubectl delete gateway ingress-gateway -n uah-development
+kubectl delete gateway api-gateway -n uah-development
 
 kubectl delete pods --all -n uah-development
 
