@@ -4,3 +4,7 @@ __pycache__/
 microservice1/__pycache__/
 microservice2/__pycache__/
 microservice3/__pycache__/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
