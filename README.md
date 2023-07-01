@@ -1,270 +1,190 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
+<h1 align="center">Máster Universitario en Desarrollo Ágil de Software para la Web</h1>
+<h3 align="center">K8s/Istio - Final Assignment</h3>
+<h5 align="center">Cloud Computing y Contenedores</h5>
+<h6 align="center">Universidad de Alcalá</h6>
+<hr>
 
+<!-- ÍNDICE -->
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">Best-README-Template</h3>
-
-  <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
-</div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
+<details open="open">
+  <summary>Índice</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#el-proyecto">El proyecto</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#stack">Stack</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#como-empezar">Como empezar</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#requisitos-previos">Requisitos previos</a></li>
+        <li><a href="#instalación">Instalación</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#licenciamiento">Licenciamiento</a></li>
+    <li><a href="#contacto">Contacto</a></li>
   </ol>
 </details>
 
+<!-- EL PROYECTO -->
 
+## El proyecto
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+[Trabajo Final - Enunciado](./documentacion/final-assignment.pdf)
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+La práctica final consiste en...
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+### Stack
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+En esta sección se listan las tecnologías, frameworks, librerías y otras herramientas o recursos relevantes usados para la realización del proyecto.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Tecnologías:
 
-Use the `BLANK_README.md` to get started.
+* []()
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Frameworks:
 
+* []()
 
+Otros recursos:
 
-### Built With
+* [VSCode](https://code.visualstudio.com/)
+* [Git](http://git-scm.com/)
+* [Github](https://github.com/)
+* [Markdown](https://www.markdownguide.org/)
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+<!-- COMO EMPEZAR -->
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+## Como empezar
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+En esta sección se listarán los pasos necesarios para obtener una copia local del proyecto y ejecutarlo en modo desarrollo.
 
+### Requisitos previos
 
+Previamente, debemos tener instalado lo siguiente:
 
-<!-- GETTING STARTED -->
-## Getting Started
+* [**VSCode**](https://code.visualstudio.com/) como editor de código.
+* [**Git**](http://git-scm.com/) como DVCS para el control de versiones.
+* [**WSL2**](https://docs.microsoft.com/en-us/windows/wsl/install-win10) (Windows Subsystem for Linux 2) con Ubuntu 20.04 LTS.
+* [**Docker Desktop**](https://www.docker.com/products/docker-desktop) para la gestión de contenedores.
+* [**Kubernetes**](https://docs.docker.com/desktop/kubernetes//) para la gestión de clusters.
+* [**Istio**](https://istio.io/latest/docs/setup/getting-started/) instalado en el cluster de Kubernetes.
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+### Obtener una copia local del repositorio
 
-### Prerequisites
+Si vamos a trabajar desde Windows usando WSL2 pero queremos seguir manteniendo por comodidad el repositorio en el sistema de archivos de Windows, podemos hacer lo siguiente:
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+1. Creamos o usamos si ya existe, una carpeta del sistema de archivos de Windows donde guardaremos y/o clonaremos los repositorio en los que vayamos a trabajar. Por ejemplo:
+
+    `%USERPROFILE%\gitProjects`.
+
+2. Creamos o usamos si ya existe, una carpeta en el sistema de archivos de WSL2 que será un enlace simbólico a la carpeta creada en el sistema de archivos de Windows:
+
+    `~/gitProjects`.
+
+3. Desde un terminal de WSL2, creamos el enlace simbólico a la carpeta en el sistema de archivos de Windows.
+
+    ```sh
+    ln -s /mnt/c/Users/%UserName%/gitProjects/ ~/gitProjects
+    ```
+
+4. Clonamos el repositorio en la carpeta creada en el sistema de archivos de Windows desde VSCode con el cliente Git integrado o desde un terminal Bash, vía HTTPS o SSH. [GitHub](https://github.com/giodimagio/uah-cloud-computing-final-assignment-part-2-backend)
+
+- HTTPS
   ```sh
-  npm install npm@latest -g
+  git clone https://github.com/giodimagio/uah-cloud-computing-final-assignment-part-2-backend.git
+  ```
+- SSH
+  ```sh
+  git clone git@github.com:giodimagio/uah-cloud-computing-final-assignment-part-2-backend.git
   ```
 
-### Installation
+5. Nos movemos a la carpeta del proyecto y lo abrimos con VSCode.
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+    ```sh
+    cd ~/gitProjects/uah-cloud-computing-final-assignment-part-2-backend
+    code .
+    ```
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+- Ejemplo de link simbólico una vez creado:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+  ```sh
+  giodimagio@PC-FON:~$ ls -l
+  total 4
+  lrwxrwxrwx 1 giodimagio giodimagio   33 Jan 14 13:23 gitProjects -> /mnt/c/Users/JROMERO/gitProjects/
 
+  giodimagio@PC-FON:~$ cd gitProjects
 
+  giodimagio@PC-FON:~/gitProjects$ ls -l
+  total 0
+  drwxrwxrwx 1 giodimagio giodimagio 512 Apr  1 14:11 uah-cloud-computing-final-assignment-part-2-backend
+  ``` 
 
-<!-- USAGE EXAMPLES -->
-## Usage
+### Configuración inicial
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+#### Instalar Istio
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+1. [Descargar Istio desde WSL2 en el directorio `~/istio-1.18.0`](https://istio.io/latest/docs/setup/getting-started/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Desinstalación completa
 
+#### Desinstalar Istio
 
+##### **Desinstalar Istio en un cluster de Kubernetes**
 
-<!-- ROADMAP -->
-## Roadmap
+1. Eliminar los recursos de Istio:
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+    ```sh
+    kubectl delete -f samples/addons
+    ```
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+2. Desinstalar Istio con istioctl:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+    ```sh
+    istioctl uninstall -y --purge
+    ```
 
+3. Eliminar el namespace `istio-system`:
 
+    ```sh
+    kubectl delete namespace istio-system
+    ```
 
-<!-- CONTRIBUTING -->
-## Contributing
+4. Eliminar la label `istio-injection` del namespace que ya no vayamos a usar con Istio:
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+    ```sh
+    kubectl label namespace uah-development istio-injection-
+    ```
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+##### **Eliminar Istio del sistema WSL2**
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Eliminar Istio de la variable de entorno `PATH` eliminando la entrada en la variable de entorno:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+    ```sh
+    echo $PATH
+    export PATH=$PATH_SIN_ISTIO
+    ```
 
+2. Eliminar el directorio de Istio:
 
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+    ```sh
+    rm -rf ~/istio-1.18.0
+    ```
 
 
 
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- LICENCIAMIENTO -->
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Licenciamiento
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Distribuido bajo la licencia MIT
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+<!-- CONTACTO -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Contacto
 
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+Jorge Romero - [jorge.romeroc@edu.uah.es](mailto:jorge.romeroc@edu.uah.es)
