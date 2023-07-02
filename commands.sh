@@ -19,24 +19,24 @@
     ## (Locally with Docker) Run each microservice separately:
 
         ### Build images
-        docker image build -t giodimagio/microservice1:v1.0 .
-        docker image build -t giodimagio/microservice2:v1.0 .
-        docker image build -t giodimagio/microservice3:v1.0 .
+        docker image build -t giodimagio/microservice1:v1 .
+        docker image build -t giodimagio/microservice2:v1 .
+        docker image build -t giodimagio/microservice3:v1 .
 
         ### Push images to Docker Hub
-        docker image push giodimagio/microservice1:v1.0
-        docker image push giodimagio/microservice2:v1.0
-        docker image push giodimagio/microservice3:v1.0
+        docker image push giodimagio/microservice1:v1
+        docker image push giodimagio/microservice2:v1
+        docker image push giodimagio/microservice3:v1
 
         ### Remove images
-        docker image rm giodimagio/microservice1:v1.0
-        docker image rm giodimagio/microservice2:v1.0
-        docker image rm giodimagio/microservice3:v1.0
+        docker image rm giodimagio/microservice1:v1
+        docker image rm giodimagio/microservice2:v1
+        docker image rm giodimagio/microservice3:v1
 
         ### Run containers
-        docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1.0 
-        docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1.0 
-        docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1.0 
+        docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1 
+        docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1 
+        docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1 
 
         ### Stop containers
         docker container stop microservice1
@@ -133,8 +133,8 @@
         kubectl logs microservice1-75dfb94b85-gxwdn -n uah-development
 
         ### K8s deploy the application
-        #kubectl apply -f microservice_1.yaml -n uah-development
         kubectl apply -f development-deploy-k8s-microservice1-v1.yaml -n uah-development
+        kubectl apply -f development-deploy-k8s-microservice2-v1.yaml -n uah-development
 
         ### K8s deploy istio gateway
         #kubectl apply -f microservice_1-gateway.yaml -n uah-development

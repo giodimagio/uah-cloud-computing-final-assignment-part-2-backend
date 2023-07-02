@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: microservice1
-        image: giodimagio/microservice1:v1.0
+        image: giodimagio/microservice1:v1
         imagePullPolicy: IfNotPresent
         resources:
           requests:
