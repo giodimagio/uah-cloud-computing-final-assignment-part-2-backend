@@ -18,6 +18,6 @@ services:
     depends_on:
       - microservice1 # Service dependencies. microservice1 must be running before microservice2
 networks:
-  uah-development-network:
-    name: uah-development-network # Network configuration. Network name for the services
+  uah-dev-network:
+    name: uah-dev-network # Network configuration. Network name for the services
     external: false # Not external network. If false, the network is created automatically

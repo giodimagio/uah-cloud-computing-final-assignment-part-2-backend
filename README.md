@@ -1,6 +1,6 @@
 
 <h1 align="center">Máster Universitario en Desarrollo Ágil de Software para la Web</h1>
-<h3 align="center">K8s/Istio - Final Assignment</h3>
+<h3 align="center">Docker/K8s/Istio - Final Assignment</h3>
 <h5 align="center">Cloud Computing y Contenedores</h5>
 <h6 align="center">Universidad de Alcalá</h6>
 <hr>
@@ -42,11 +42,11 @@ En esta sección se listan las tecnologías, frameworks, librerías y otras herr
 
 Tecnologías:
 
-* []()
+* [Python 3.8.10](https://www.python.org/downloads/release/python-3810/)
 
 Frameworks:
 
-* []()
+* [Flask 2.3.2](https://flask.palletsprojects.com/en/2.3.x/)
 
 Otros recursos:
 
@@ -155,7 +155,7 @@ Si vamos a trabajar desde Windows usando WSL2 pero queremos seguir manteniendo p
 4. Eliminar la label `istio-injection` del namespace que ya no vayamos a usar con Istio:
 
     ```sh
-    kubectl label namespace uah-development istio-injection-
+    kubectl label namespace uah-dev istio-injection-
     ```
 
 ##### **Eliminar Istio del sistema WSL2**

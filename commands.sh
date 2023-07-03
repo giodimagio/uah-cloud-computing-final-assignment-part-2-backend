@@ -69,16 +69,16 @@
     ## (Locally with Kubernetes managed with Istio) Run the application
 
         ### K8s create namespace
-        kubectl create namespace uah-development
+        kubectl create namespace uah-dev
 
         ### K8s delete namespace
-        kubectl delete namespace uah-development 
+        kubectl delete namespace uah-dev
 
         ### K8s create deployment
-        # kubectl create -f deployment.yaml -n uah-development
+        # kubectl create -f deployment.yaml -n uah-dev
 
-        ### K8s label "uah-development" namespace for Istio injection
-        kubectl label namespace uah-development istio-injection=enabled
+        ### K8s label "uah-dev" namespace for Istio injection
+        kubectl label namespace uah-dev istio-injection=enabled
 
         ### K8s get cluster info
         kubectl cluster-info
@@ -86,97 +86,95 @@
         ### K8s get all namespaces & their labels
         kubectl get namespaces --show-labels
 
-        ### K8s get all pods of "uah-development" namespace with labels
-        kubectl get pods -n uah-development --show-labels
+        ### K8s get all pods of "uah-dev" namespace with labels
+        kubectl get pods -n uah-dev --show-labels
 
-        ### K8s get all services of "uah-development" namespace with labels
-        kubectl get services -n uah-development --show-labels
+        ### K8s get all services of "uah-dev" namespace with labels
+        kubectl get services -n uah-dev --show-labels
 
-        ### K8s get all deployments of "uah-development" namespace with labels
-        kubectl get deployments -n uah-development --show-labels
+        ### K8s get all deployments of "uah-dev" namespace with labels
+        kubectl get deployments -n uah-dev --show-labels
 
-        ### K8s get all virtualservices of "uah-development" namespace with labels
-        kubectl get virtualservices -n uah-development --show-labels
+        ### K8s get all virtualservices of "uah-dev" namespace with labels
+        kubectl get virtualservices -n uah-dev --show-labels
 
-        ### K8s get all destinationrules of "uah-development" namespace with labels
-        kubectl get destinationrules -n uah-development --show-labels
+        ### K8s get all destinationrules of "uah-dev" namespace with labels
+        kubectl get destinationrules -n uah-dev --show-labels
 
-        ### K8s get all serviceaccounts of "uah-development" namespace with labels
-        kubectl get serviceaccounts -n uah-development  
+        ### K8s get all serviceaccounts of "uah-dev" namespace with labels
+        kubectl get serviceaccounts -n uah-dev  
 
-        ### K8s get all gateways of "uah-development" namespace with labels
-        kubectl get gateways -n uah-development --show-labels
+        ### K8s get all gateways of "uah-dev" namespace with labels
+        kubectl get gateways -n uah-dev --show-labels
 
         ### K8s get pod <pod-name>
-        kubectl get pod microservice1-75dfb94b85-gxwdn -n uah-development
+        kubectl get pod microservice1-75dfb94b85-gxwdn -n uah-dev
 
         ### K8s get service <service-name>
-        kubectl get service microservice1 -n uah-development
+        kubectl get service microservice1 -n uah-dev
         kubectl get service istio-ingressgateway -n istio-system
 
         ### K8s get gateway <gateway-name>
-        kubectl get gateway -n uah-development
+        kubectl get gateway -n uah-dev
 
         ### K8s get virtualservice <virtualservice-name>
-        kubectl get virtualservice -n uah-development
+        kubectl get virtualservice -n uah-dev
 
         ### K8s get destinationrule <destinationrule-name>
-        kubectl get destinationrule -n uah-development
+        kubectl get destinationrule -n uah-dev
 
         ### K8s describe pod <pod-name>
-        kubectl describe pod microservice1-75dfb94b85-gxwdn -n uah-development
+        kubectl describe pod microservice1-75dfb94b85-gxwdn -n uah-dev
 
         ### K8s describes service
-        kubectl describe service microservice1-service -n uah-development
+        kubectl describe service microservice1-service -n uah-dev
 
         ### K8s get logs of a pod <pod-name>
-        kubectl logs microservice1-75dfb94b85-gxwdn -n uah-development
-
-        ### K8s deploy the application
-        kubectl apply -f development-deploy-k8s-microservice1-v1.yaml -n uah-development
-        kubectl apply -f development-deploy-k8s-microservice2-v1.yaml -n uah-development
+        kubectl logs microservice1-75dfb94b85-gxwdn -n uah-dev
 
         ### K8s deploy istio gateway
-        #kubectl apply -f microservice_1-gateway.yaml -n uah-development
-        kubectl apply -f development-deploy-istio-gateway.yaml -n uah-development
+        kubectl apply -f dev-deploy-istio-gateway.yaml -n uah-dev
 
-        ### K8s shell into a pod <pod-name>
-        kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-development /bin/bash
-
-        ### K8s execcute cURL command into a deployed pod <pod-name>
-        kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-development -- curl http://microservice1-service.uah-development.svc.cluster.local:5000/microservice-1
-
-        ### K8s delete the deployment & service by their yaml file
-        #kubectl delete -f microservice_1.yaml -n uah-development
-        kubectl delete -f development-deploy-k8s-microservice1-v1.yaml -n uah-development
+        ### K8s deploy the application
+        kubectl apply -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev
+        kubectl apply -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev
 
         ### K8s delete istio gateway & virtualservice by their yaml file
-        #kubectl delete -f microservice_1-gateway.yaml -n uah-development
-        kubectl delete -f development-deploy-istio-gateway.yaml -n uah-development
+        kubectl delete -f dev-deploy-istio-gateway.yaml -n uah-dev
+
+        ### K8s delete the deployment & service by their yaml file
+        kubectl delete -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev
+        kubectl delete -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev 
+
+        ### K8s shell into a pod <pod-name>
+        kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-dev /bin/bash
+
+        ### K8s execcute cURL command into a deployed pod <pod-name>
+        kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-dev -- curl http://microservice1-service.uah-dev.svc.cluster.local:5000/microservice-1
 
         ### K8s delete istio gateway by its <gateway-name>
-        kubectl delete gateway ingress-gateway -n uah-development
+        kubectl delete gateway ingress-gateway -n uah-dev
 
-        ### K8s delete all pods of "uah-development" namespace
-        kubectl delete pods --all -n uah-development
+        ### K8s delete all pods of "uah-dev" namespace
+        kubectl delete pods --all -n uah-dev
 
-        ### K8s delete all services of "uah-development" namespace
-        kubectl delete services --all -n uah-development
+        ### K8s delete all services of "uah-dev" namespace
+        kubectl delete services --all -n uah-dev
 
-        ### K8s delete all deployments of "uah-development" namespace
-        kubectl delete deployments --all -n uah-development
+        ### K8s delete all deployments of "uah-dev" namespace
+        kubectl delete deployments --all -n uah-dev
 
-        ### K8s delete all virtualservices of "uah-development" namespace
-        kubectl delete virtualservices --all -n uah-development
+        ### K8s delete all virtualservices of "uah-dev" namespace
+        kubectl delete virtualservices --all -n uah-dev
 
-        ### K8s delete all destinationrules of "uah-development" namespace
-        kubectl delete destinationrules --all -n uah-development
+        ### K8s delete all destinationrules of "uah-dev" namespace
+        kubectl delete destinationrules --all -n uah-dev
 
-        ### K8s delete all serviceaccounts of "uah-development" namespace
-        kubectl delete serviceaccounts --all -n uah-development
+        ### K8s delete all serviceaccounts of "uah-dev" namespace
+        kubectl delete serviceaccounts --all -n uah-dev
 
-        ### K8s delete all gateways of "uah-development" namespace
-        kubectl delete gateways --all -n uah-development
+        ### K8s delete all gateways of "uah-dev" namespace
+        kubectl delete gateways --all -n uah-dev
 
         ### K8s Addons: https://istio.io/latest/docs/setup/getting-started/#dashboard
 
@@ -223,7 +221,7 @@
         istioctl proxy-status
 
         ### Istio - analyze
-        istioctl analyze -n uah-development
+        istioctl analyze -n uah-dev
 
 # ------------------ Production ------------------ #
 
