@@ -19,39 +19,39 @@
     ## (Locally with Docker) Run each microservice separately:
 
         ### Build images
-        docker image build -t giodimagio/microservice1:v1 .
-        docker image build -t giodimagio/microservice2:v1 .
-        docker image build -t giodimagio/microservice3:v1 .
+        docker image build -t giodimagio/microservice1:v1 .   # Microservice 1
+        docker image build -t giodimagio/microservice2:v1 .   # Microservice 2
+        docker image build -t giodimagio/microservice3:v1 .   # Microservice 3
 
         ### Push images to Docker Hub
-        docker image push giodimagio/microservice1:v1
-        docker image push giodimagio/microservice2:v1
-        docker image push giodimagio/microservice3:v1
+        docker image push giodimagio/microservice1:v1   # Microservice 1
+        docker image push giodimagio/microservice2:v1   # Microservice 2
+        docker image push giodimagio/microservice3:v1   # Microservice 3
 
         ### Remove images
-        docker image rm giodimagio/microservice1:v1
-        docker image rm giodimagio/microservice2:v1
-        docker image rm giodimagio/microservice3:v1
+        docker image rm giodimagio/microservice1:v1   # Microservice 1
+        docker image rm giodimagio/microservice2:v1   # Microservice 2
+        docker image rm giodimagio/microservice3:v1   # Microservice 3
 
         ### Run containers
-        docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1 
-        docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1 
-        docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1 
+        docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1   # Microservice 1 
+        docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1   # Microservice 2 
+        docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1   # Microservice 3 
 
         ### Stop containers
-        docker container stop microservice1
-        docker container stop microservice2
-        docker container stop microservice3
+        docker container stop microservice1   # Microservice 1
+        docker container stop microservice2   # Microservice 2
+        docker container stop microservice3   # Microservice 3
 
         ### Remove containers
-        docker container rm microservice1
-        docker container rm microservice2
-        docker container rm microservice3
+        docker container rm microservice1   # Microservice 1
+        docker container rm microservice2   # Microservice 2
+        docker container rm microservice3   # Microservice 3
 
         ### Execute commands in containers
-        docker container exec -it microservice1 /bin/bash
-        docker container exec -it microservice2 /bin/bash
-        docker container exec -it microservice3 /bin/bash
+        docker container exec -it microservice1 /bin/bash   # Microservice 1
+        docker container exec -it microservice2 /bin/bash   # Microservice 2
+        docker container exec -it microservice3 /bin/bash   # Microservice 3
 
     ## (Locally with Docker Compose) Run all microservices:
 
@@ -62,9 +62,9 @@
         docker-compose down
 
         ### Execute commands in containers
-        docker-compose exec microservice1 /bin/bash
-        docker-compose exec microservice2 /bin/bash
-        docker-compose exec microservice3 /bin/bash
+        docker-compose exec microservice1 /bin/bash   # Microservice 1
+        docker-compose exec microservice2 /bin/bash   # Microservice 2
+        docker-compose exec microservice3 /bin/bash   # Microservice 3
 
     ## (Locally with Kubernetes managed with Istio) Run the application
 
@@ -136,15 +136,15 @@
         kubectl apply -f dev-deploy-istio-gateway.yaml -n uah-dev
 
         ### K8s deploy the application
-        kubectl apply -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev
-        kubectl apply -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev
+        kubectl apply -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev   # Microservice 1
+        kubectl apply -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev   # Microservice 2
 
         ### K8s delete istio gateway & virtualservice by their yaml file
         kubectl delete -f dev-deploy-istio-gateway.yaml -n uah-dev
 
         ### K8s delete the deployment & service by their yaml file
-        kubectl delete -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev
-        kubectl delete -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev 
+        kubectl delete -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev   # Microservice 1
+        kubectl delete -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev   # Microservice 2
 
         ### K8s shell into a pod <pod-name>
         kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-dev /bin/bash
@@ -228,24 +228,24 @@
 # ------------------ Testing ------------------ #
 
     ## (Locally on WSL 2) Check if URLs are available
-    curl -I http://localhost:5001/microservice-1
-    curl -I http://localhost:5002/microservice-2
-    curl -I http://localhost:5003/microservice-3
+    curl -I http://localhost:5001/microservice-1   # Microservice 1
+    curl -I http://localhost:5002/microservice-2   # Microservice 2
+    curl -I http://localhost:5003/microservice-3   # Microservice 3
 
     ## (Locally on Docker) Check if URLs are available
-    curl -I http://localhost:5010/microservice-1
-    curl -I http://localhost:5020/microservice-2
-    curl -I http://localhost:5030/microservice-3
+    curl -I http://localhost:5010/microservice-1   # Microservice 1
+    curl -I http://localhost:5020/microservice-2   # Microservice 2
+    curl -I http://localhost:5030/microservice-3   # Microservice 3
 
     ## (Locally on Kubernetes inside the docker container or istio envoy proxy) Check if URLs are available
-    curl -I http://localhost:5000/microservice-1
-    curl -I http://localhost:5000/microservice-2
-    curl -I http://localhost:5000/microservice-3
+    curl -I http://localhost:5000/microservice-1   # Microservice 1
+    curl -I http://localhost:5000/microservice-2   # Microservice 2
+    curl -I http://localhost:5000/microservice-3   # Microservice 3
 
     ## (Locally on Kubernetes using the browser agains Kubernetes Gateway) Check if URLs are available
-    curl -I http://localhost:80/microservice-1
-    curl -I http://localhost:80/microservice-2
-    curl -I http://localhost:80/microservice-3
+    curl -I http://localhost:80/microservice-1   # Microservice 1
+    curl -I http://localhost:80/microservice-2   # Microservice 2
+    curl -I http://localhost:80/microservice-3   # Microservice 3
 
 # ------------------ Others ------------------ #
 

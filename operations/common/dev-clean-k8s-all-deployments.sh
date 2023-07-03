@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#################### Cleaning script to delete all deployments ####################
+#################### Cleaning script to delete all deployments in uah-dev namespace ####################
 
 # ------------------ Development ------------------ #
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#################### Cleaning script to delete backend deployments ####################
+#################### Operation: Clean deployment of all v1 services ####################
 
 # ------------------ Development ------------------ #
 

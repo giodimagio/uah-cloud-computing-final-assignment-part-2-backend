@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice2-v2
+  labels:
+    app: microservice2
+    version: v2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: microservice2
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: microservice2
+        version: v2
+    spec:
+      containers:
+      - name: microservice2
+        image: giodimagio/microservice2:v2
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: 64Mi
+            cpu: 250m
+          limits:
+            memory: 128Mi
+            cpu: 500m
+        ports:
+        - containerPort: 5002
+        env:
+          - name: MICROSERVICE1_URL
+            value: "http://microservice1:5001/api/v1/microservice1"
+  
