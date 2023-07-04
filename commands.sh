@@ -18,40 +18,75 @@
 
     ## (Locally with Docker) Run each microservice separately:
 
-        ### Build images
-        docker image build -t giodimagio/microservice1:v1 .   # Microservice 1
-        docker image build -t giodimagio/microservice2:v1 .   # Microservice 2
-        docker image build -t giodimagio/microservice3:v1 .   # Microservice 3
+        ### Build images - v1
+        docker image build -t giodimagio/microservice1:v1 .   # Microservice 1 v1
+        docker image build -t giodimagio/microservice2:v1 .   # Microservice 2 v1
+        docker image build -t giodimagio/microservice3:v1 .   # Microservice 3 v1
 
-        ### Push images to Docker Hub
-        docker image push giodimagio/microservice1:v1   # Microservice 1
-        docker image push giodimagio/microservice2:v1   # Microservice 2
-        docker image push giodimagio/microservice3:v1   # Microservice 3
+        ### Build images - v2
+        docker image build -t giodimagio/microservice1:v2 .   # Microservice 1 v2
+        docker image build -t giodimagio/microservice2:v2 .   # Microservice 2 v2
+        docker image build -t giodimagio/microservice3:v2 .   # Microservice 3 v2
 
-        ### Remove images
-        docker image rm giodimagio/microservice1:v1   # Microservice 1
-        docker image rm giodimagio/microservice2:v1   # Microservice 2
-        docker image rm giodimagio/microservice3:v1   # Microservice 3
+        ### Push images to Docker Hub - v1
+        docker image push giodimagio/microservice1:v1   # Microservice 1 v1
+        docker image push giodimagio/microservice2:v1   # Microservice 2 v1
+        docker image push giodimagio/microservice3:v1   # Microservice 3 v1
 
-        ### Run containers
-        docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1   # Microservice 1 
-        docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1   # Microservice 2 
-        docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1   # Microservice 3 
+        ### Push images to Docker Hub - v2
+        docker image push giodimagio/microservice1:v2   # Microservice 1 v2
+        docker image push giodimagio/microservice2:v2   # Microservice 2 v2
+        docker image push giodimagio/microservice3:v2   # Microservice 3 v2
 
-        ### Stop containers
-        docker container stop microservice1   # Microservice 1
-        docker container stop microservice2   # Microservice 2
-        docker container stop microservice3   # Microservice 3
+        ### Remove images - v1
+        docker image rm giodimagio/microservice1:v1   # Microservice 1 v1 
+        docker image rm giodimagio/microservice2:v1   # Microservice 2 v1
+        docker image rm giodimagio/microservice3:v1   # Microservice 3 v1
 
-        ### Remove containers
-        docker container rm microservice1   # Microservice 1
-        docker container rm microservice2   # Microservice 2
-        docker container rm microservice3   # Microservice 3
+        ### Remove images - v2
+        docker image rm giodimagio/microservice1:v2   # Microservice 1 v2
+        docker image rm giodimagio/microservice2:v2   # Microservice 2 v2
+        docker image rm giodimagio/microservice3:v2   # Microservice 3 v2
 
-        ### Execute commands in containers
-        docker container exec -it microservice1 /bin/bash   # Microservice 1
-        docker container exec -it microservice2 /bin/bash   # Microservice 2
-        docker container exec -it microservice3 /bin/bash   # Microservice 3
+        ### Run containers - v1
+        docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1   # Microservice 1 v1
+        docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1   # Microservice 2 v1
+        docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1   # Microservice 3 v1
+
+        ### Run containers - v2
+        docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v2   # Microservice 1 v2
+        docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v2   # Microservice 2 v2
+        docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v2   # Microservice 3 v2
+
+        ### Stop containers - v1
+        docker container stop microservice1:v1   # Microservice 1 v1
+        docker container stop microservice2:v1   # Microservice 2 v1
+        docker container stop microservice3:v1   # Microservice 3 v1
+
+        ### Stop containers - v2
+        docker container stop microservice1:v2   # Microservice 1 v2
+        docker container stop microservice2:v2   # Microservice 2 v2
+        docker container stop microservice3:v2   # Microservice 3 v2
+
+        ### Remove containers - v1
+        docker container rm microservice1:v1   # Microservice 1 v1
+        docker container rm microservice2:v1   # Microservice 2 v1
+        docker container rm microservice3:v1   # Microservice 3 v1
+
+        ### Remove containers - v2
+        docker container rm microservice1:v2   # Microservice 1 v2
+        docker container rm microservice2:v2   # Microservice 2 v2
+        docker container rm microservice3:v2   # Microservice 3 v2
+
+        ### Execute commands in containers - v1
+        docker container exec -it microservice1:v1 /bin/bash   # Microservice 1 v1
+        docker container exec -it microservice2:v1 /bin/bash   # Microservice 2 v1
+        docker container exec -it microservice3:v1 /bin/bash   # Microservice 3 v1
+
+        ### Execute commands in containers - v2
+        docker container exec -it microservice1:v2 /bin/bash   # Microservice 1 v2
+        docker container exec -it microservice2:v2 /bin/bash   # Microservice 2 v2
+        docker container exec -it microservice3:v2 /bin/bash   # Microservice 3 v2
 
     ## (Locally with Docker Compose) Run all microservices:
 
@@ -61,12 +96,20 @@
         ### Stop containers
         docker-compose down
 
-        ### Execute commands in containers
-        docker-compose exec microservice1 /bin/bash   # Microservice 1
-        docker-compose exec microservice2 /bin/bash   # Microservice 2
-        docker-compose exec microservice3 /bin/bash   # Microservice 3
+        ### Execute commands in containers - v1
+        docker-compose exec microservice1:v1 /bin/bash   # Microservice 1 v1
+        docker-compose exec microservice2:v1 /bin/bash   # Microservice 2 v1
+        docker-compose exec microservice3:v1 /bin/bash   # Microservice 3 v1
+
+        ### Execute commands in containers - v2
+        docker-compose exec microservice1:v2 /bin/bash   # Microservice 1 v2
+        docker-compose exec microservice2:v2 /bin/bash   # Microservice 2 v2
+        docker-compose exec microservice3:v2 /bin/bash   # Microservice 3 v2
 
     ## (Locally with Kubernetes managed with Istio) Run the application
+
+        ### K8s reset kubernetes cluster
+        #### Use Docker Desktop to reset Kubernetes cluster: Settings -> Kubernetes -> Reset Kubernetes cluster
 
         ### K8s create namespace
         kubectl create namespace uah-dev
@@ -102,7 +145,7 @@
         kubectl get destinationrules -n uah-dev --show-labels
 
         ### K8s get all serviceaccounts of "uah-dev" namespace with labels
-        kubectl get serviceaccounts -n uah-dev  
+        kubectl get serviceaccounts -n uah-dev --show-labels 
 
         ### K8s get all gateways of "uah-dev" namespace with labels
         kubectl get gateways -n uah-dev --show-labels
@@ -126,7 +169,7 @@
         ### K8s describe pod <pod-name>
         kubectl describe pod microservice1-75dfb94b85-gxwdn -n uah-dev
 
-        ### K8s describes service
+        ### K8s describes service <service-name>
         kubectl describe service microservice1-service -n uah-dev
 
         ### K8s get logs of a pod <pod-name>
@@ -135,16 +178,24 @@
         ### K8s deploy istio gateway
         kubectl apply -f dev-deploy-istio-gateway.yaml -n uah-dev
 
-        ### K8s deploy the application
-        kubectl apply -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev   # Microservice 1
-        kubectl apply -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev   # Microservice 2
+        ### K8s deploy the application - v1
+        kubectl apply -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev   # Microservice 1 v1
+        kubectl apply -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev   # Microservice 2 v1
+
+        ### K8s deploy the application - v2
+        kubectl apply -f dev-deploy-k8s-microservice1-v2.yaml -n uah-dev   # Microservice 1 v2
+        kubectl apply -f dev-deploy-k8s-microservice2-v2.yaml -n uah-dev   # Microservice 2 v2
 
         ### K8s delete istio gateway & virtualservice by their yaml file
         kubectl delete -f dev-deploy-istio-gateway.yaml -n uah-dev
 
-        ### K8s delete the deployment & service by their yaml file
-        kubectl delete -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev   # Microservice 1
-        kubectl delete -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev   # Microservice 2
+        ### K8s delete the deployment & service by their yaml file - v1
+        kubectl delete -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev   # Microservice 1 v1
+        kubectl delete -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev   # Microservice 2 v1
+
+        ### K8s delete the deployment & service by their yaml file - v2
+        kubectl delete -f dev-deploy-k8s-microservice1-v2.yaml -n uah-dev   # Microservice 1 v2
+        kubectl delete -f dev-deploy-k8s-microservice2-v2.yaml -n uah-dev   # Microservice 2 v2
 
         ### K8s shell into a pod <pod-name>
         kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-dev /bin/bash
@@ -178,10 +229,10 @@
 
         ### K8s Addons: https://istio.io/latest/docs/setup/getting-started/#dashboard
 
-            #### K8s Addons deployment
+            #### K8s Addons deployment (from ~/istio-1.18.0 directory)
             kubectl apply -f samples/addons
 
-            #### K8s Addons uninstall
+            #### K8s Addons uninstall (from ~/istio-1.18.0 directory)
             kubectl delete -f samples/addons
 
             #### K8s check deployment status of kiali deployment

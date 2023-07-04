@@ -1,0 +1,23 @@
+services:
+  microservice1:
+    image: microservice1:v2 # Image name for the service microservice1
+    env_file: ./microservice1/.env.local_docker # Environment variables for the service
+    build:
+      context: ./microservice1 # Path to Dockerfile. Build configuration for the service
+      dockerfile: Dockerfile # Dockerfile name. Build configuration for the service
+    ports:
+      - "5010:5001" # Port mapping. Mapping host port <host>:<container> to container port for the service
+  microservice2:
+    image: microservice2:v2
+    env_file: ./microservice2/.env.local_docker # Environment variables for the service
+    build:
+      context: ./microservice2
+      dockerfile: Dockerfile
+    ports:
+      - "5020:5002"
+    depends_on:
+      - microservice1 # Service dependencies. microservice1 must be running before microservice2
+networks:
+  uah-dev-network:
+    name: uah-dev-network # Network configuration. Network name for the services
+    external: false # Not external network. If false, the network is created automatically
