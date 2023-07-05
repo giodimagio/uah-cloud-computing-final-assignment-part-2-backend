@@ -11,8 +11,8 @@ spec:
         - destination:
             host: microservice1
             subset: v1
-          weight: 5
+          weight: 20
         - destination:
             host: microservice1
             subset: v2
-          weight: 95
+          weight: 80

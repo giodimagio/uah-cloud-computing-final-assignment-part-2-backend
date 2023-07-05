@@ -22,6 +22,7 @@
         docker image build -t giodimagio/microservice1:v1 .   # Microservice 1 v1
         docker image build -t giodimagio/microservice2:v1 .   # Microservice 2 v1
         docker image build -t giodimagio/microservice3:v1 .   # Microservice 3 v1
+        docker image build -t giodimagio/frontend-svelte:v1 .   # Frontend Svelte v1
 
         ### Build images - v2
         docker image build -t giodimagio/microservice1:v2 .   # Microservice 1 v2
@@ -32,6 +33,7 @@
         docker image push giodimagio/microservice1:v1   # Microservice 1 v1
         docker image push giodimagio/microservice2:v1   # Microservice 2 v1
         docker image push giodimagio/microservice3:v1   # Microservice 3 v1
+        docker image push giodimagio/frontend-svelte:v1   # Frontend Svelte v1
 
         ### Push images to Docker Hub - v2
         docker image push giodimagio/microservice1:v2   # Microservice 1 v2
@@ -42,6 +44,7 @@
         docker image rm giodimagio/microservice1:v1   # Microservice 1 v1 
         docker image rm giodimagio/microservice2:v1   # Microservice 2 v1
         docker image rm giodimagio/microservice3:v1   # Microservice 3 v1
+        docker image rm giodimagio/frontend-svelte:v1   # Frontend Svelte v1
 
         ### Remove images - v2
         docker image rm giodimagio/microservice1:v2   # Microservice 1 v2
@@ -170,7 +173,7 @@
         kubectl describe pod microservice1-75dfb94b85-gxwdn -n uah-dev
 
         ### K8s describes service <service-name>
-        kubectl describe service microservice1-service -n uah-dev
+        kubectl describe service microservice1 -n uah-dev
 
         ### K8s get logs of a pod <pod-name>
         kubectl logs microservice1-75dfb94b85-gxwdn -n uah-dev
@@ -201,7 +204,7 @@
         kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-dev /bin/bash
 
         ### K8s execcute cURL command into a deployed pod <pod-name>
-        kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-dev -- curl http://microservice1-service.uah-dev.svc.cluster.local:5000/microservice-1
+        kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-dev -- curl http://microservice1.uah-dev.svc.cluster.local:5000/microservice-1
 
         ### K8s delete istio gateway by its <gateway-name>
         kubectl delete gateway ingress-gateway -n uah-dev

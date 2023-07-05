@@ -6,5 +6,7 @@
 
 kubectl apply -f dev-microservice1-virtualservice.yaml -n uah-dev
 kubectl apply -f dev-microservice2-virtualservice.yaml -n uah-dev
+kubectl apply -f dev-microservice3-virtualservice.yaml -n uah-dev
 kubectl apply -f dev-microservice1-destinationrule.yaml -n uah-dev
 kubectl apply -f dev-microservice2-destinationrule.yaml -n uah-dev
+kubectl apply -f dev-microservice3-destinationrule.yaml -n uah-dev

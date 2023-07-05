@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: api-gateway
+  name: istio-gateway
 spec:
   selector:
     istio: ingressgateway
@@ -16,12 +16,12 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: api-virtualservice
+  name: istio-gateway-virtualservice
 spec:
   hosts:
   - "*"
   gateways:
-  - api-gateway
+  - istio-gateway
   http:
   - match:
     - uri:
@@ -39,3 +39,11 @@ spec:
         port:
           number: 5002
         host: microservice2.uah-dev.svc.cluster.local   # microservice2.uah-dev.svc.cluster.local
+  - match:
+    - uri:
+        prefix: /api/v1/microservice3
+    route:
+    - destination:
+        port:
+          number: 5003
+        host: microservice3.uah-dev.svc.cluster.local   # microservice3.uah-dev.svc.cluster.local

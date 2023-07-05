@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: microservice1-v2
+  name: microservice3-v2
   labels:
-    app: microservice1
+    app: microservice3
     version: v2
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: microservice1
+      app: microservice3
       version: v2
   template:
     metadata:
       labels:
-        app: microservice1
+        app: microservice3
         version: v2
     spec:
       containers:
-      - name: microservice1
-        image: giodimagio/microservice1:v2
+      - name: microservice3
+        image: giodimagio/microservice3:v2
         imagePullPolicy: IfNotPresent
         # resources:
         #   requests:
@@ -29,4 +29,4 @@ spec:
         #     memory: 128Mi
         #     cpu: 500m
         ports:
-        - containerPort: 5001
+        - containerPort: 5003
