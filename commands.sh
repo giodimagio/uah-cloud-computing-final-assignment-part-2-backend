@@ -55,6 +55,7 @@
         docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1   # Microservice 1 v1
         docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1   # Microservice 2 v1
         docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1   # Microservice 3 v1
+        docker container run -d -p 4000:4000 --name frontend-svelte giodimagio/frontend-svelte:v1   # Frontend Svelte v1
 
         ### Run containers - v2
         docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v2   # Microservice 1 v2

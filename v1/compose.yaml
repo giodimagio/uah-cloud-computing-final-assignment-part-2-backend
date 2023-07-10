@@ -1,6 +1,6 @@
 services:
   microservice1:
-    image: microservice1:v1 # Image name for the service microservice1
+    image: giodimagio/microservice1:v1 # Image name for the service microservice1
     env_file: ./microservice1/.env.local_docker # Environment variables for the service
     build:
       context: ./microservice1 # Path to Dockerfile. Build configuration for the service
@@ -8,7 +8,7 @@ services:
     ports:
       - "5010:5001" # Port mapping. Mapping host port <host>:<container> to container port for the service
   microservice2:
-    image: microservice2:v1
+    image: giodimagio/microservice2:v1
     env_file: ./microservice2/.env.local_docker # Environment variables for the service
     build:
       context: ./microservice2
@@ -18,7 +18,7 @@ services:
     depends_on:
       - microservice1 # Service dependencies. microservice1 must be running before microservice2
   microservice3:
-    image: microservice3:v1
+    image: giodimagio/microservice3:v1
     env_file: ./microservice3/.env.local_docker
     build:
       context: ./microservice3
