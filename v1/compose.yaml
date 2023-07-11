@@ -1,4 +1,11 @@
 services:
+  api-gateway:
+    image: giodimagio/api-gateway:v1 # Image name for the service api-gateway
+    build:
+      context: ./api-gateway # Path to Dockerfile. Build configuration for the service
+      dockerfile: Dockerfile # Dockerfile name. Build configuration for the service
+    ports:
+      - "9000:9000" # Port mapping. Mapping host port <host>:<container> to container port for the service
   microservice1:
     image: giodimagio/microservice1:v1 # Image name for the service microservice1
     env_file: ./microservice1/.env.local_docker # Environment variables for the service

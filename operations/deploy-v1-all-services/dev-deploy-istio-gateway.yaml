@@ -12,46 +12,44 @@ spec:
       protocol: HTTP
     hosts:
     - "*"
+
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: istio-gateway-virtualservice
+  name: frontend-virtualservice
 spec:
   hosts:
   - "*"
   gateways:
   - istio-gateway
   http:
-    - match:
-      - uri:
-          prefix: 
-      route:
-      - destination:
-          port:
-            number: 4000
-          host: frontend-svelte.uah-dev.svc.cluster.local
-  # - match:
-  #   - uri:
-  #       prefix: /api/v1/microservice1
-  #   route:
-  #   - destination:
-  #       port:
-  #         number: 5001
-  #       host: microservice1.uah-dev.svc.cluster.local   # microservice1.uah-dev.svc.cluster.local
-  # - match:
-  #   - uri:
-  #       prefix: /api/v1/microservice2
-  #   route:
-  #   - destination:
-  #       port:
-  #         number: 5002
-  #       host: microservice2.uah-dev.svc.cluster.local   # microservice2.uah-dev.svc.cluster.local
-  # - match:
-  #   - uri:
-  #       prefix: /api/v1/microservice3
-  #   route:
-  #   - destination:
-  #       port:
-  #         number: 5003
-  #       host: microservice3.uah-dev.svc.cluster.local   # microservice3.uah-dev.svc.cluster.local
+  - match:
+    - uri:
+        exact: /front
+    - port: 80
+    route:
+    - destination:
+        host: frontend-svelte.uah-dev.svc.cluster.local
+        port:
+          number: 4000
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: gateway-virtualservice
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /api
+    route:
+    - destination:
+        host: api-gateway.uah-dev.svc.cluster.local
+        port:
+          number: 9000

@@ -19,10 +19,11 @@
     ## (Locally with Docker) Run each microservice separately:
 
         ### Build images - v1
+        docker image build -t giodimagio/api-gateway:v1 .   # Flask API Gateway v1
+        docker image build -t giodimagio/frontend-svelte:v1 .   # Frontend Svelte v1
         docker image build -t giodimagio/microservice1:v1 .   # Microservice 1 v1
         docker image build -t giodimagio/microservice2:v1 .   # Microservice 2 v1
         docker image build -t giodimagio/microservice3:v1 .   # Microservice 3 v1
-        docker image build -t giodimagio/frontend-svelte:v1 .   # Frontend Svelte v1
 
         ### Build images - v2
         docker image build -t giodimagio/microservice1:v2 .   # Microservice 1 v2
@@ -30,10 +31,11 @@
         docker image build -t giodimagio/microservice3:v2 .   # Microservice 3 v2
 
         ### Push images to Docker Hub - v1
+        docker image push giodimagio/api-gateway:v1   # Flask API Gateway v1
+        docker image push giodimagio/frontend-svelte:v1   # Frontend Svelte v1
         docker image push giodimagio/microservice1:v1   # Microservice 1 v1
         docker image push giodimagio/microservice2:v1   # Microservice 2 v1
         docker image push giodimagio/microservice3:v1   # Microservice 3 v1
-        docker image push giodimagio/frontend-svelte:v1   # Frontend Svelte v1
 
         ### Push images to Docker Hub - v2
         docker image push giodimagio/microservice1:v2   # Microservice 1 v2
@@ -41,10 +43,11 @@
         docker image push giodimagio/microservice3:v2   # Microservice 3 v2
 
         ### Remove images - v1
+        docker image rm giodimagio/api-gateway:v1   # Flask API Gateway v1
+        docker image rm giodimagio/frontend-svelte:v1   # Frontend Svelte v1
         docker image rm giodimagio/microservice1:v1   # Microservice 1 v1 
         docker image rm giodimagio/microservice2:v1   # Microservice 2 v1
         docker image rm giodimagio/microservice3:v1   # Microservice 3 v1
-        docker image rm giodimagio/frontend-svelte:v1   # Frontend Svelte v1
 
         ### Remove images - v2
         docker image rm giodimagio/microservice1:v2   # Microservice 1 v2
@@ -52,10 +55,11 @@
         docker image rm giodimagio/microservice3:v2   # Microservice 3 v2
 
         ### Run containers - v1
+        docker container run -d -p 9000:9000 --name api-gateway giodimagio/api-gateway:v1   # Flask API Gateway v1
+        docker container run -d -p 4000:4000 --name frontend-svelte giodimagio/frontend-svelte:v1   # Frontend Svelte v1
         docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v1   # Microservice 1 v1
         docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v1   # Microservice 2 v1
         docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1   # Microservice 3 v1
-        docker container run -d -p 4000:4000 --name frontend-svelte giodimagio/frontend-svelte:v1   # Frontend Svelte v1
 
         ### Run containers - v2
         docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v2   # Microservice 1 v2
@@ -63,26 +67,32 @@
         docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v2   # Microservice 3 v2
 
         ### Stop containers - v1
+        docker container stop api-gateway:v1   # Flask API Gateway v1
+        docker container stop frontend-svelte:v1   # Frontend Svelte v1
         docker container stop microservice1:v1   # Microservice 1 v1
         docker container stop microservice2:v1   # Microservice 2 v1
         docker container stop microservice3:v1   # Microservice 3 v1
-
+        
         ### Stop containers - v2
         docker container stop microservice1:v2   # Microservice 1 v2
         docker container stop microservice2:v2   # Microservice 2 v2
         docker container stop microservice3:v2   # Microservice 3 v2
 
         ### Remove containers - v1
+        docker container rm api-gateway:v1   # Flask API Gateway v1
+        docker container rm frontend-svelte:v1   # Frontend Svelte v1
         docker container rm microservice1:v1   # Microservice 1 v1
         docker container rm microservice2:v1   # Microservice 2 v1
         docker container rm microservice3:v1   # Microservice 3 v1
-
+        
         ### Remove containers - v2
         docker container rm microservice1:v2   # Microservice 1 v2
         docker container rm microservice2:v2   # Microservice 2 v2
         docker container rm microservice3:v2   # Microservice 3 v2
 
         ### Execute commands in containers - v1
+        docker container exec -it api-gateway:v1 /bin/bash   # Flask API Gateway v1
+        docker container exec -it frontend-svelte:v1 /bin/bash   # Frontend Svelte v1
         docker container exec -it microservice1:v1 /bin/bash   # Microservice 1 v1
         docker container exec -it microservice2:v1 /bin/bash   # Microservice 2 v1
         docker container exec -it microservice3:v1 /bin/bash   # Microservice 3 v1
@@ -101,6 +111,8 @@
         docker-compose down
 
         ### Execute commands in containers - v1
+        docker-compose exec api-gateway:v1 /bin/bash   # Flask API Gateway v1
+        docker-compose exec frontend-svelte:v1 /bin/bash   # Frontend Svelte v1
         docker-compose exec microservice1:v1 /bin/bash   # Microservice 1 v1
         docker-compose exec microservice2:v1 /bin/bash   # Microservice 2 v1
         docker-compose exec microservice3:v1 /bin/bash   # Microservice 3 v1
@@ -183,19 +195,26 @@
         kubectl apply -f dev-deploy-istio-gateway.yaml -n uah-dev
 
         ### K8s deploy the application - v1
+        kubectl apply -f dev-deploy-k8s-api-gateway-v1.yaml -n uah-dev   # Flask API Gateway v1
+        kubectl apply -f dev-deploy-k8s-frontend-svelte-v1.yaml -n uah-dev   # Frontend Svelte v1
         kubectl apply -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev   # Microservice 1 v1
         kubectl apply -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev   # Microservice 2 v1
+        kubectl apply -f dev-deploy-k8s-microservice3-v1.yaml -n uah-dev   # Microservice 3 v1
 
         ### K8s deploy the application - v2
         kubectl apply -f dev-deploy-k8s-microservice1-v2.yaml -n uah-dev   # Microservice 1 v2
         kubectl apply -f dev-deploy-k8s-microservice2-v2.yaml -n uah-dev   # Microservice 2 v2
+        kubectl apply -f dev-deploy-k8s-microservice3-v2.yaml -n uah-dev   # Microservice 3 v2
 
         ### K8s delete istio gateway & virtualservice by their yaml file
         kubectl delete -f dev-deploy-istio-gateway.yaml -n uah-dev
 
         ### K8s delete the deployment & service by their yaml file - v1
+        kubectl delete -f dev-deploy-k8s-api-gateway-v1.yaml -n uah-dev   # Flask API Gateway v1
+        kubectl delete -f dev-deploy-k8s-frontend-svelte-v1.yaml -n uah-dev   # Frontend Svelte v1
         kubectl delete -f dev-deploy-k8s-microservice1-v1.yaml -n uah-dev   # Microservice 1 v1
         kubectl delete -f dev-deploy-k8s-microservice2-v1.yaml -n uah-dev   # Microservice 2 v1
+        kubectl delete -f dev-deploy-k8s-microservice3-v1.yaml -n uah-dev   # Microservice 3 v1
 
         ### K8s delete the deployment & service by their yaml file - v2
         kubectl delete -f dev-deploy-k8s-microservice1-v2.yaml -n uah-dev   # Microservice 1 v2
@@ -283,24 +302,28 @@
 # ------------------ Testing ------------------ #
 
     ## (Locally on WSL 2) Check if URLs are available
-    curl -I http://localhost:5001/microservice-1   # Microservice 1
-    curl -I http://localhost:5002/microservice-2   # Microservice 2
-    curl -I http://localhost:5003/microservice-3   # Microservice 3
+    curl -I http://localhost:5001/microservice1   # Microservice 1
+    curl -I http://localhost:5002/microservice2   # Microservice 2
+    curl -I http://localhost:5003/microservice3   # Microservice 3
 
     ## (Locally on Docker) Check if URLs are available
-    curl -I http://localhost:5010/microservice-1   # Microservice 1
-    curl -I http://localhost:5020/microservice-2   # Microservice 2
-    curl -I http://localhost:5030/microservice-3   # Microservice 3
+    curl -I http://localhost:5010/microservice1   # Microservice 1
+    curl -I http://localhost:5020/microservice2   # Microservice 2
+    curl -I http://localhost:5030/microservice3   # Microservice 3
 
     ## (Locally on Kubernetes inside the docker container or istio envoy proxy) Check if URLs are available
-    curl -I http://localhost:5000/microservice-1   # Microservice 1
-    curl -I http://localhost:5000/microservice-2   # Microservice 2
-    curl -I http://localhost:5000/microservice-3   # Microservice 3
-
-    ## (Locally on Kubernetes using the browser agains Kubernetes Gateway) Check if URLs are available
-    curl -I http://localhost:80/microservice-1   # Microservice 1
-    curl -I http://localhost:80/microservice-2   # Microservice 2
-    curl -I http://localhost:80/microservice-3   # Microservice 3
+    curl -I http://api-gateway:9000/api   # Flask API Gateway
+    curl -I http://frontend-svelte:4000/front   # Frontend Svelte
+    curl -I http://microservice1:5001/microservic1   # Microservice 1
+    curl -I http://microservice1:5001/microservice2   # Microservice 2
+    curl -I http://microservice1:5001/microservice3   # Microservice 3
+    
+    ## (Locally on Kubernetes agains API Gateway or Frontend service) Check if URLs are available
+    curl -I http://localhost:80/api   # Flask API Gateway
+    curl -I http://localhost:80/front   # Frontend Svelte
+    curl -I http://localhost:80/api/v1/microservice1   # Microservice 1
+    curl -I http://localhost:80/api/v1/microservice2   # Microservice 2
+    curl -I http://localhost:80/api/v1/microservice3   # Microservice 3
 
 # ------------------ Others ------------------ #
 
