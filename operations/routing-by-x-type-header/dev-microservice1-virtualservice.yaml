@@ -1,0 +1,21 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: microservice1-virtualservice
+spec:
+  hosts:
+    - microservice1   # It will only accept traffic for microservice1 host, not as any other host like localhost
+  http:
+    - match:
+      - headers:
+          Version:
+            exact: "v1"
+      route:
+        - destination:
+            host: microservice1
+            subset: v1
+    - route:
+      - destination:
+          host: microservice1
+          subset: v2

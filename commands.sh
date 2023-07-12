@@ -26,6 +26,7 @@
         docker image build -t giodimagio/microservice3:v1 .   # Microservice 3 v1
 
         ### Build images - v2
+        docker image build -t giodimagio/api-gateway:v2 .   # Flask API Gateway v2
         docker image build -t giodimagio/microservice1:v2 .   # Microservice 1 v2
         docker image build -t giodimagio/microservice2:v2 .   # Microservice 2 v2
         docker image build -t giodimagio/microservice3:v2 .   # Microservice 3 v2
@@ -38,6 +39,7 @@
         docker image push giodimagio/microservice3:v1   # Microservice 3 v1
 
         ### Push images to Docker Hub - v2
+        docker image push giodimagio/api-gateway:v2   # Flask API Gateway v2
         docker image push giodimagio/microservice1:v2   # Microservice 1 v2
         docker image push giodimagio/microservice2:v2   # Microservice 2 v2
         docker image push giodimagio/microservice3:v2   # Microservice 3 v2
@@ -50,6 +52,7 @@
         docker image rm giodimagio/microservice3:v1   # Microservice 3 v1
 
         ### Remove images - v2
+        docker image rm giodimagio/api-gateway:v2   # Flask API Gateway v2
         docker image rm giodimagio/microservice1:v2   # Microservice 1 v2
         docker image rm giodimagio/microservice2:v2   # Microservice 2 v2
         docker image rm giodimagio/microservice3:v2   # Microservice 3 v2
@@ -62,6 +65,7 @@
         docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v1   # Microservice 3 v1
 
         ### Run containers - v2
+        docker container run -d -p 9000:9000 --name api-gateway giodimagio/api-gateway:v2   # Flask API Gateway v2
         docker container run -d -p 5010:5001 --env-file .env.local_docker --name microservice1 giodimagio/microservice1:v2   # Microservice 1 v2
         docker container run -d -p 5020:5002 --env-file .env.local_docker --name microservice2 giodimagio/microservice2:v2   # Microservice 2 v2
         docker container run -d -p 5030:5003 --env-file .env.local_docker --name microservice3 giodimagio/microservice3:v2   # Microservice 3 v2
@@ -74,6 +78,7 @@
         docker container stop microservice3:v1   # Microservice 3 v1
         
         ### Stop containers - v2
+        docker container stop api-gateway:v2   # Flask API Gateway v2
         docker container stop microservice1:v2   # Microservice 1 v2
         docker container stop microservice2:v2   # Microservice 2 v2
         docker container stop microservice3:v2   # Microservice 3 v2
@@ -86,6 +91,7 @@
         docker container rm microservice3:v1   # Microservice 3 v1
         
         ### Remove containers - v2
+        docker container rm api-gateway:v2   # Flask API Gateway v2
         docker container rm microservice1:v2   # Microservice 1 v2
         docker container rm microservice2:v2   # Microservice 2 v2
         docker container rm microservice3:v2   # Microservice 3 v2
@@ -98,6 +104,7 @@
         docker container exec -it microservice3:v1 /bin/bash   # Microservice 3 v1
 
         ### Execute commands in containers - v2
+        docker container exec -it api-gateway:v2 /bin/bash   # Flask API Gateway v2
         docker container exec -it microservice1:v2 /bin/bash   # Microservice 1 v2
         docker container exec -it microservice2:v2 /bin/bash   # Microservice 2 v2
         docker container exec -it microservice3:v2 /bin/bash   # Microservice 3 v2
@@ -118,6 +125,7 @@
         docker-compose exec microservice3:v1 /bin/bash   # Microservice 3 v1
 
         ### Execute commands in containers - v2
+        docker-compose exec api-gateway:v2 /bin/bash   # Flask API Gateway v2
         docker-compose exec microservice1:v2 /bin/bash   # Microservice 1 v2
         docker-compose exec microservice2:v2 /bin/bash   # Microservice 2 v2
         docker-compose exec microservice3:v2 /bin/bash   # Microservice 3 v2
@@ -202,6 +210,7 @@
         kubectl apply -f dev-deploy-k8s-microservice3-v1.yaml -n uah-dev   # Microservice 3 v1
 
         ### K8s deploy the application - v2
+        kubectl apply -f dev-deploy-k8s-api-gateway-v2.yaml -n uah-dev   # Flask API Gateway v2
         kubectl apply -f dev-deploy-k8s-microservice1-v2.yaml -n uah-dev   # Microservice 1 v2
         kubectl apply -f dev-deploy-k8s-microservice2-v2.yaml -n uah-dev   # Microservice 2 v2
         kubectl apply -f dev-deploy-k8s-microservice3-v2.yaml -n uah-dev   # Microservice 3 v2
@@ -217,8 +226,10 @@
         kubectl delete -f dev-deploy-k8s-microservice3-v1.yaml -n uah-dev   # Microservice 3 v1
 
         ### K8s delete the deployment & service by their yaml file - v2
+        kubectl delete -f dev-deploy-k8s-api-gateway-v2.yaml -n uah-dev   # Flask API Gateway v2
         kubectl delete -f dev-deploy-k8s-microservice1-v2.yaml -n uah-dev   # Microservice 1 v2
         kubectl delete -f dev-deploy-k8s-microservice2-v2.yaml -n uah-dev   # Microservice 2 v2
+        kubectl delete -f dev-deploy-k8s-microservice3-v2.yaml -n uah-dev   # Microservice 3 v2
 
         ### K8s shell into a pod <pod-name>
         kubectl exec -it microservice1-75dfb94b85-gxwdn -n uah-dev /bin/bash
